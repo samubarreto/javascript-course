@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cara ou coroa?</title>
+  </head>
+
+  <style>
+    
+    body {
+      font-family: Roboto, Arial;
+    }
+
+  </style>
+
+  <body>
+
+    <h1>CARA OU COROA</h1>
+    <button onclick="
+
+      chute = 'Cara';
+      jogarJogo(chute);
+
+    ">CARA</button>
+    <button onclick="
+
+      chute = 'Coroa';
+      jogarJogo(chute);
+
+    ">COROA</button>
+    <button onclick="
+    
+      resetarPlacar();
+    
+    ">
+      RESETAR PLACAR
+    </button>
+
+    <p class="js-result"></p>
+    <p class="js-moves"></p>
+    <p class="js-score"></p>
+
+    <script>
+
+      let score = JSON.parse(localStorage.getItem('score')) || {
+        wins: 0,
+        losses: 0
+      };
+
+      function resetarPlacar() {
+        score.wins = 0
+        score.losses = 0
+          updateScoreElement();
+      }
+
+      function updateResultElement() {
+        resultParagraph = document.querySelector('.js-result');
+        resultParagraph.innerHTML = `${res}`
+      }
+
+      function updateMovesElement() {
+        moveParagraph = document.querySelector('.js-moves');
+        moveParagraph.innerHTML = `Você chutou ${chute}. O resultado foi ${rollRes}.`
+      }
+
+      function updateScoreElement() {
+        scoreParagraph = document.querySelector('.js-score');
+        scoreParagraph.innerHTML = `Vitórias: ${score.wins}. Derrotas: ${score.losses}.`
+      }
+
+      function jogarJogo(chute) {
+        rollRes = roll()
+        if (rollRes === chute) {
+          score.wins++;
+          res = 'Você venceu.';
+        } else {
+          score.losses++;
+          res = 'Você perdeu.';
+        }
+        exibirEAlterarResultado(chute, rollRes, res);
+      }
+
+      function roll() {
+        let random = Math.random();
+        if (random >= 0.5) {
+          res = 'Coroa';
+        } else {
+          res = 'Cara';
+        }
+        return res
+      };
+
+      function exibirEAlterarResultado(chute, rollRes, res) {
+
+        localStorage.setItem('score', JSON.stringify(score));
+
+        updateResultElement();
+        updateMovesElement();
+        updateScoreElement();
+      };
+
+    </script>
+  </body>
+</html>

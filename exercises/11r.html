@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>remove ovo</title>
+  </head>
+  <body>
+    <script>
+      const arrayTeste = ['pão', 'arroz', 'ovo', 'ovo', 'minecraft'];
+
+      function removeOvo(array) {
+        const novoArray = []
+        for (let i = 0; i < array.length; i++) {
+          if (array[i] === 'ovo') {
+            continue;
+          } else {
+            novoArray.push(array[i]);
+          }
+        }
+        return novoArray
+      }
+
+      console.log(removeOvo(arrayTeste));
+
+    </script>
+  </body>
+</html>

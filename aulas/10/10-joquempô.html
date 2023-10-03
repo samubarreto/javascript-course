@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joquempô</title>
+    <style>
+      body {
+        font-family: Roboto, Arial;
+        background-color: rgb(25, 25, 25);
+        color: white;
+      }
+
+      .mainContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      p {
+        font-size: 15px;
+        font-weight: bold;
+        margin: 0px;
+        margin-top: 10px;
+      }
+
+      .scoreP {
+        margin-bottom: 10px;
+      }
+
+      h1 {
+        font-size: 50px;
+      }
+
+      h2 {
+        font-size: 30px;
+        margin: 0px;
+        margin-top: 25px;
+      }
+      
+      .chooseButton {
+        background-color: rgb(25, 25, 25);
+        border: 2px solid white;
+        border-radius: 50px;
+        cursor: pointer;
+        padding: 20px;
+        transition: all 0.15s;
+        margin: 0px 5px;
+      }
+
+      .chooseButton:hover {
+        border-width: 5px;
+        background-color: rgb(255, 255, 255);
+      }
+
+      .chooseButton:active {
+        opacity: 0.8;
+      }
+
+      .buttonImg {
+        width: 50px;
+      }
+
+      .resetButton {
+        font-size: 15px;
+        font-weight: bold;
+        padding: 10px 80px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .resetButton:hover {
+        opacity: 0.8;
+        padding: 10px 100px;
+      }
+
+      .resetButton:active {
+        opacity: 0.5;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <section class="mainContainer">
+      <h1>Joquempô</h1>
+      
+      <div class="buttonsContainer">
+        <button class="chooseButton" onclick="
+        botMove = shuffleBotMove();
+        playGame('PEDRA');
+        "><img src="src/PEDRA.png" class="buttonImg">
+        </button>
+
+        <button class="chooseButton" onclick="
+        botMove = shuffleBotMove();
+        playGame('PAPEL');
+        "><img src="src/PAPEL.png" class="buttonImg">
+        </button>
+
+        <button class="chooseButton" onclick="
+        botMove = shuffleBotMove();
+        playGame('TESOURA');
+        "><img src="src/TESOURA.png" class="buttonImg">
+        </button>
+      </div>
+
+      <h2 class="js-result"></h2>
+      <p class="js-moves movesP"></p>
+      <p class="js-score scoreP"></p>
+
+      <button class="resetButton" onclick="
+      score.wins = 0;
+      score.losses = 0;
+      score.ties = 0;
+
+      localStorage.removeItem('score');
+      updateScoreElement();
+
+      ">
+        Resetar Placar
+      </button>
+    </section>
+
+    <script>
+
+      let score = JSON.parse(localStorage.getItem('score')) || {
+        wins: 0,
+        losses: 0,
+        ties: 0
+      };
+
+      updateScoreElement();
+
+      /*      
+      if (!score) {
+        score = {
+          wins: 0,
+          losses: 0,
+          ties: 0
+        }
+      }
+      */
+
+      function updateResultElement(result) {
+        document.querySelector('.js-result')
+        .innerHTML = result;
+      }
+
+      function updateMovesElement(playerMove, botMove) {
+        document.querySelector('.js-moves')
+        .innerHTML = `Você <img src="src/${playerMove}.png" class="buttonImg"> X <img src="src/${botMove}.png" class="buttonImg"> Bot`;
+      }
+
+      function updateScoreElement() {
+        document.querySelector('.js-score')
+        .innerHTML = `Vitórias: ${score.wins} · Derrotas: ${score.losses} · Empates: ${score.ties}`;
+      };
+
+      function playGame(playerMove) {
+
+        let result = ''
+
+        if (playerMove === 'TESOURA') {
+          if (botMove === 'PEDRA') {
+            result = 'Você perdeu.'
+          } else if (botMove === 'PAPEL') {
+            result = 'Você venceu.'
+          } else if (botMove === 'TESOURA') {
+            result = 'Empatou.'
+          }
+        } else if (playerMove === 'PEDRA') {
+          if (botMove === 'PEDRA') {
+            result = 'Empatou.'
+          } else if (botMove === 'PAPEL') {
+            result = 'Você perdeu.'
+          } else if (botMove === 'TESOURA') {
+            result = 'Você venceu.'
+          }
+        } else if (playerMove === 'PAPEL') {
+          if (botMove === 'PEDRA') {
+            result = 'Você venceu.'
+          } else if (botMove === 'PAPEL') {
+            result = 'Empatou.'
+          } else if (botMove === 'TESOURA') {
+            result = 'Você perdeu.'
+          }
+        }
+
+        if (result === 'Você venceu.') {
+          score.wins++;
+        } else if (result === 'Você perdeu.') {
+          score.losses++;
+        } else if (result === 'Empatou.') {
+          score.ties++;
+        }
+
+        localStorage.setItem('score', JSON.stringify(score));
+
+        updateScoreElement();
+        updateResultElement(result);
+        updateMovesElement(playerMove, botMove);
+
+      }
+
+      function shuffleBotMove() {
+        const rng = Math.random();
+        let botMove = ''
+
+        if (rng >= 0 && rng < 1/3) {
+          botMove = 'PEDRA';
+        } else if (rng >= 1/3 && rng <= 2/3) {
+          botMove = 'PAPEL';
+        } else {
+          botMove = 'TESOURA';
+        }
+        return botMove;
+      }
+
+    </script>
+  </body>
+</html>

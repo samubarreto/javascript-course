@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joquempô</title>
+    <style>
+      body {
+        font-family: Roboto, Arial;
+      }
+    </style>
+  </head>
+  <body>
+
+    <p>Joquempô</p>
+    
+    <button onclick="
+    
+    botMove = shuffleBotMove();
+    playGame('pedra');
+
+    ">Pedra
+    </button>
+
+    <button onclick="
+
+    botMove = shuffleBotMove();
+    playGame('papel');
+
+    ">Papel
+    </button>
+
+    <button onclick="
+
+    botMove = shuffleBotMove();
+    playGame('tesoura');
+    
+  ">Tesoura
+  </button>
+
+    <script>
+
+      function playGame(playerMove) {
+        if (playerMove === 'tesoura') {
+          if (botMove === 'Pedra') {
+            alert(`Você escolheu ${playerMove}. O Bot escolheu ${botMove}. Você perdeu!`);
+          } else if (botMove === 'Papel') {
+            alert(`Você escolheu ${playerMove}. O Bot escolheu ${botMove}. Você venceu!`);
+          } else if (botMove === 'Tesoura') {
+            alert(`Você escolheu ${playerMove}. O Bot escolheu ${botMove}. Empatou!`);
+          }
+        } else if (playerMove === 'pedra') {
+          if (botMove === 'Pedra') {
+            alert(`Você escolheu ${playerMove}. O Bot escolheu ${botMove}. Empatou!`);
+          } else if (botMove === 'Papel') {
+            alert(`Você escolheu ${playerMove}. O Bot escolheu ${botMove}. Você perdeu!`);
+          } else if (botMove === 'Tesoura') {
+            alert(`Você escolheu ${playerMove}. O Bot escolheu ${botMove}. Você venceu!`);
+          }
+        } else if (playerMove === 'papel') {
+          if (botMove === 'Pedra') {
+            alert(`Você escolheu ${playerMove}. O Bot escolheu ${botMove}. Você venceu!`);
+          } else if (botMove === 'Papel') {
+            alert(`Você escolheu ${playerMove}. O Bot escolheu ${botMove}. Empatou!`);
+          } else if (botMove === 'Tesoura') {
+            alert(`Você escolheu ${playerMove}. O Bot escolheu ${botMove}. Você perdeu!`);
+          }
+        }
+      }
+
+      function shuffleBotMove() {
+        const rng = Math.random();
+        let botMove = ''
+
+        if (rng >= 0 && rng < 1/3) {
+          botMove = 'Pedra';
+        } else if (rng >= 1/3 && rng <= 2/3) {
+          botMove = 'Papel';
+        } else {
+          botMove = 'Tesoura';
+        }
+        return botMove;
+      }
+
+    </script>
+  </body>
+</html>

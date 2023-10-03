@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora</title>
+
+    <style>
+
+      p {
+        color: rgb(55, 111, 214);
+        font-family: Roboto, Arial;
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      .grid-principal{
+        display: grid;
+        grid-template-columns: 80px 80px 80px;
+        /* place-items: center; */
+      }
+
+      .grid-operadores {
+        display: grid;
+        grid-template-columns: 35px 35px 35px 35px 35px 35px 35px;
+      }
+
+      .number, .equal {
+        height: 80px;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(55, 111, 214);
+        color: white;
+        font-size: 30px;
+        font-family: Roboto, Arial;
+        font-weight: bold;
+        border: 3px solid rgb(107, 145, 218);
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+
+      .equal {
+        width: 160px;
+      }
+
+      .number:hover,
+      .equal:hover {
+        opacity: 0.8;
+        border: 7px solid white;
+      }
+
+      .number:active,
+      .equal:active {
+        opacity: 0.5;
+      }
+
+      .special {
+        margin-top: 10px;
+        background-color: rgb(55, 111, 214);
+        border-radius: 50px;
+        border: 0px solid rgb(107, 145, 218);
+        cursor: pointer;
+        color: white;
+        font-family: Roboto, Arial;
+        font-weight: bold;
+        padding: 10px 11px;
+        transition: all 0.15s;
+      }
+
+      .special:hover {
+        opacity: 0.8;
+        border-color: red;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+      
+    <section>
+      <p class="js-calculus"></p>
+    </section>
+
+    <section class="grid-principal">
+        <button onclick="calcular('1')" class="number">1</button>
+        <button onclick="calcular('2')" class="number">2</button>
+        <button onclick="calcular('3')" class="number">3</button>
+        <button onclick="calcular('4')" class="number">4</button>
+        <button onclick="calcular('5')" class="number">5</button>
+        <button onclick="calcular('6')" class="number">6</button>
+        <button onclick="calcular('7')" class="number">7</button>
+        <button onclick="calcular('8')" class="number">8</button>
+        <button onclick="calcular('9')" class="number">9</button>
+        <button onclick="calcular('0')" class="number">0</button>
+        <button onclick="calcular(' = ')" class="equal">=</button>
+    </section>
+      
+    <section class="grid-operadores">
+      <button onclick="calcular('C')" class="special">C</button>
+      <button onclick="calcular(' + ')" class="special">+</button>
+      <button onclick="calcular(' - ')" class="special">-</button>
+      <button onclick="calcular(' * ')" class="special">*</button>
+      <button onclick="calcular(' / ')" class="special">/</button>
+      <button onclick="calcular(' ( ')" class="special">(</button>
+      <button onclick="calcular(' ) ')" class="special">)</button>
+    </section>
+
+    <script>
+
+      //let score = JSON.parse(localStorage.getItem('score')) || {
+      //  wins: 0,
+      //  losses: 0,
+      //  ties: 0
+      //};
+
+      let cálculo = localStorage.getItem('cálculo') || '';
+      let cálculoElement = document.querySelector('.js-calculus');
+      cálculoElement.innerHTML = localStorage.getItem('cálculo') || '';
+
+      function calcular(dígito) {
+          if (dígito === ' = ') {
+              localStorage.setItem('cálculo', cálculo);
+              cálculoElement.innerHTML += ` = ${eval(cálculo)}`;
+
+          } else if (dígito === 'C') {
+              cálculo = '';
+              localStorage.removeItem('cálculo');
+              cálculoElement.innerHTML = '';
+
+          } else {
+              cálculo += dígito;
+              localStorage.setItem('cálculo', cálculo);
+              cálculoElement.innerHTML += dígito;
+          }
+      }
+    </script>
+  </body>
+</html>

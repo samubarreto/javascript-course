@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joquempô</title>
+    <style>
+      body {
+        font-family: Roboto, Arial;
+      }
+    </style>
+  </head>
+  <body>
+
+    <p>Joquempô</p>
+    
+    <button onclick="
+    botMove = shuffleBotMove();
+    playGame('PEDRA');
+    ">Pedra
+    </button>
+
+    <button onclick="
+    botMove = shuffleBotMove();
+    playGame('PAPEL');
+    ">Papel
+    </button>
+
+    <button onclick="
+    botMove = shuffleBotMove();
+    playGame('TESOURA');
+  ">Tesoura
+  </button>
+
+  <button onclick="
+  score.wins = 0;
+  score.losses = 0;
+  score.ties = 0;
+
+  localStorage.removeItem('score');
+
+  ">
+    Resetar Placar
+  </button>
+
+    <script>
+
+      let score = JSON.parse(localStorage.getItem('score')) || {
+        wins: 0,
+        losses: 0,
+        ties: 0
+      };
+
+      /*      
+      if (!score) {
+        score = {
+          wins: 0,
+          losses: 0,
+          ties: 0
+        }
+      }
+      */
+
+      function playGame(playerMove) {
+
+        let result = ''
+
+        if (playerMove === 'TESOURA') {
+          if (botMove === 'PEDRA') {
+            result = 'Você perdeu.'
+          } else if (botMove === 'PAPEL') {
+            result = 'Você venceu.'
+          } else if (botMove === 'TESOURA') {
+            result = 'Empatou.'
+          }
+        } else if (playerMove === 'PEDRA') {
+          if (botMove === 'PEDRA') {
+            result = 'Empatou.'
+          } else if (botMove === 'PAPEL') {
+            result = 'Você perdeu.'
+          } else if (botMove === 'TESOURA') {
+            result = 'Você venceu.'
+          }
+        } else if (playerMove === 'PAPEL') {
+          if (botMove === 'PEDRA') {
+            result = 'Você venceu.'
+          } else if (botMove === 'PAPEL') {
+            result = 'Empatou.'
+          } else if (botMove === 'TESOURA') {
+            result = 'Você perdeu.'
+          }
+        }
+
+        if (result === 'Você venceu.') {
+          score.wins++;
+        } else if (result === 'Você perdeu.') {
+          score.losses++;
+        } else if (result === 'Empatou.') {
+          score.ties++;
+        }
+
+        localStorage.setItem('score', JSON.stringify(score));
+
+        alert(`Você escolheu ${playerMove}. O Bot escolheu ${botMove}. ${result}
+Vitórias: ${score.wins} · Derrotas: ${score.losses} · Empates: ${score.ties}.`);
+
+      }
+
+      function shuffleBotMove() {
+        const rng = Math.random();
+        let botMove = ''
+
+        if (rng >= 0 && rng < 1/3) {
+          botMove = 'PEDRA';
+        } else if (rng >= 1/3 && rng <= 2/3) {
+          botMove = 'PAPEL';
+        } else {
+          botMove = 'TESOURA';
+        }
+        return botMove;
+      }
+
+    </script>
+  </body>
+</html>

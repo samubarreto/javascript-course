@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      /*
+      const testArray = [-2, -1, 0, 99];
+      function addOne(array) {
+        const newArray = [];
+        for (i=0; array[i] != undefined; i++) {
+          newArray.push(array[i]+1);
+        }
+        return newArray;
+      }
+      console.log(addOne(testArray));
+      */
+
+      /*
+      const testArray = [-2, -1, 0, 99];
+      function addQuantity(array, value) {
+        const newArray = [];
+        for (i=0; array[i] != undefined; i++) {
+          newArray.push(array[i]+value);
+        }
+        return newArray;
+      }
+      console.log(addQuantity(testArray, 2));
+      */
+
+      /*
+      const testArray1 = [-2, -1, 0, 99];
+      const testArray2 = [2, 1, 0, -99];
+      function addArrays(array1, array2) {
+        const newArray = [];
+        for (i=0; array1[i] != undefined; i++) {
+          newArray.push(array1[i]+array2[i]);
+        }
+        return newArray;
+      }
+      console.log(addArrays(testArray1, testArray2));
+      */
+
+      /*
+      const testArray = [-2, -1, 0, 99];
+      function countPositive(array) {
+        let counter = 0;
+        for (i=0; array[i] != undefined; i++) {
+          if (array[i] > 0) {
+            counter++
+          }
+        }
+        return counter;
+      }
+      console.log(countPositive(testArray));
+      */
+
+      /*
+      const testArray = [];
+
+      function minMax(array) {
+        let result = {
+          min: null,
+          max: null
+        }
+
+        if (array.length === 0) {
+          return result;
+        }
+
+        result.min = array[0];
+        result.max = array[0];
+
+        for (let i=0; i < array.length; i++) {
+          if (array[i] > result.max) {
+            result.max = array[i];
+          }
+          if (array[i] < result.min) {
+            result.min = array[i];
+          }
+        }
+        return result;
+      }
+
+      console.log(minMax(testArray));
+      */
+
+      const testArray = ['maçã', 'banana', 'coco', 'coco', 'banana', 'maçã', 'banana', 'coco', 'coco', 'maçã', 'banana', 'coco', 'coco', 'banana', 'maçã', 'banana', 'coco', 'coco', 'maçã', 'banana', 'coco', 'coco', 'banana', 'maçã', 'banana', 'coco', 'coco', 'maçã', 'banana', 'coco', 'coco', 'banana', 'maçã', 'banana', 'coco', 'coco', 'maçã', 'banana', 'coco', 'coco', 'banana', 'maçã', 'banana', 'coco', 'coco', 'maçã', 'banana', 'coco', 'coco', 'banana', 'maçã', 'banana', 'coco', 'coco', 'maçã', 'banana', 'coco', 'coco', 'banana', 'maçã', 'banana', 'coco', 'coco', 'maçã', 'banana', 'coco', 'coco', 'banana', 'maçã', 'banana', 'coco', 'coco', 'maçã', 'banana', 'coco', 'coco', 'banana', 'maçã', 'banana', 'coco', 'coco',];
+
+      function countWords(array) {
+        let result = {}
+        for (let i=0; i < array.length; i++) {
+          const palavra = array[i];
+          if (!result[palavra]) {
+            result[palavra] = 1;
+          } else {
+            result[palavra]++;
+          }
+        }
+        return result;
+      }
+
+      console.log(countWords(testArray))
+
+    </script>
+  </body>
+</html>

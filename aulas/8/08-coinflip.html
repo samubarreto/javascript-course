@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cara ou coroa?</title>
+  </head>
+
+  <style>
+    
+    body {
+      font-family: Roboto, Arial;
+      background-color: rgb(40, 40, 40);
+      color: white;
+    }
+
+    .container {
+      display: grid;
+      place-content: center;
+      align-items: center;
+    }
+
+    .box {
+      background-color: rgb(62, 178, 190);
+      padding: 5vh;
+      border-radius: 100px;
+      border-color: rgba(83, 63, 63, 0.1);
+      border-style: solid;
+      border-width: 1vh;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .box:hover {
+      border-color: rgb(255, 255, 255);
+      border-radius: 450px;
+    }
+
+  </style>
+
+  <body>
+    <div class="container">
+      <div class="box">
+        <div>CARA OU COROA</div>
+        <div>
+          <button onclick="
+
+            chute = 'Cara';
+            jogarJogo(chute);
+
+          ">CARA</button>
+          <button onclick="
+
+            chute = 'Coroa';
+            jogarJogo(chute);
+
+        ">COROA</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+
+      let score = JSON.parse(localStorage.getItem('score')) || {
+        wins: 0,
+        losses: 0
+      };
+
+      function jogarJogo(chute) {
+        rollRes = roll()
+        if (rollRes === chute) {
+          score.wins++;
+          res = 'Você venceu.';
+        } else {
+          score.losses++;
+          res = 'Você perdeu.';
+        }
+        exibirEAlterarResultado(chute, rollRes, res);
+      }
+
+      function roll() {
+        let random = Math.random();
+        if (random >= 0.5) {
+          res = 'Coroa';
+        } else {
+          res = 'Cara';
+        }
+        return res
+      };
+
+      function exibirEAlterarResultado(chute, rollRes, res) {
+        localStorage.setItem('score', JSON.stringify(score))
+        console.log(`Você escolheu ${chute}. O sorteado foi ${rollRes}. ${res}
+Vitórias: ${score.wins}. Derrotas: ${score.losses}.`);
+      };
+
+    </script>
+  </body>
+</html>

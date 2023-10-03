@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buit-in-objects</title>
+
+  </head>
+
+  <body>
+    
+    <script>
+
+      /*
+      
+      JSON -> JavaScript Object Notation
+
+      -É uma sintaxe;
+      -Parecido com um objeto qualquer do JS;
+      -Tem menos ferramentas.
+
+      ** Usado para armazenar e compartilhar dados entre diferentes PCs, e possivelmente, diferentes linguagens
+
+      */
+
+      const product2 = {
+        name: 'camiseta',
+        'delivery-time': '1 dia',
+        rating: {
+          stars: 4.5,
+          count: 87
+        },
+        fun: function function1() {
+          console.log('função dentro dum objeto');
+        } /* ISSO É UM MÉTODO */
+      };
+
+      console.log(product2.name);
+      console.log(product2['name']);
+      console.log(product2['delivery-time']);
+      console.log(product2.rating);
+      console.log(product2.rating.stars);
+      console.log(product2.rating.count);
+      console.log(product2['rating'])
+      console.log(product2);
+
+      console.log(JSON.stringify(product2)); /* bota algum objeto aí pra ser convertido de objeto js pra json (não suporta funções)*/
+      
+      const JSONstring = JSON.stringify(product2) /*armazenei a conversão de objeto js pra JSON nessa variável */
+      console.log(JSON.parse(JSONstring)); /*exibi a reconversão de json de volta pra objeto js (a função foi pra casa do crl pq json n suporta) */
+
+      console.log('hello'.length);
+      console.log('hello'.toUpperCase());
+
+      const object1 = {
+        message: 'hello'
+      };
+
+      const object2 = object1;
+
+      object1.message = 'bye';
+      console.log(object1);
+      console.log(object2);
+
+      const object3 = {
+        message: 'bye'
+      };
+
+      console.log(object3 === object1);
+      console.log(object1 === object2);
+      console.log(object1.message === object3.message);
+
+      const object4 = {
+        message: 'bye',
+        price: 799
+      };
+
+      // const message = object4.message;
+      const { message, price } = object4;
+      console.log(message);
+      console.log(price);
+
+      const object5 = {
+        // message: message
+        message,
+        // method: function function2() {
+        //   console.log('method');
+        // }
+        method() {
+          console.log('method');
+        }
+      };
+
+      console.log(object5);
+      object5.method();
+
+    </script>
+  </body>
+</html>

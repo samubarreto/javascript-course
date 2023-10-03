@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cara ou coroa?</title>
+  </head>
+
+  <style>
+    
+    body {
+      font-family: Roboto, Arial;
+      background-color: rgb(63, 63, 63);
+      color: white;
+    }
+
+    .container {
+      display: grid;
+      place-content: center;
+      align-items: center;
+    }
+
+    .box {
+      background-color: rgb(62, 178, 190);
+      padding: 5vh;
+      border-radius: 100px;
+      border-color: rgba(83, 63, 63, 0.1);
+      border-style: solid;
+      border-width: 1vh;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .box:hover {
+      border-color: rgb(255, 255, 255);
+      padding: 30vh;
+      border-radius: 450px;
+    }
+
+  </style>
+
+  <body>
+    <div class="container">
+      <div class="box">
+        <div>CARA OU COROA</div>
+        <div>
+          <button onclick="
+
+            let roll = Math.random();
+            let resultado = '';
+
+            if (roll <= 1/2) {
+              resultado = 'CARA';
+            } else if (roll > 1/2) {
+              resultado = 'COROA';
+            }
+
+            if (resultado === 'CARA') {
+              alert('CAIU CARA, VOCÊ ACERTOU!');
+            } else {
+              alert('CAIU COROA, VOCÊ ERROU!');
+            }
+
+          ">CARA</button>
+          <button onclick="
+
+            roll = Math.random();
+            resultado = '';
+
+            if (roll <= 1/2) {
+              resultado = 'CARA';
+            } else if (roll > 1/2) {
+              resultado = 'COROA';
+            }
+
+            if (resultado === 'CARA') {
+              alert('CAIU CARA, VOCÊ ERROU!');
+            } else {
+              alert('CAIU COROA, VOCÊ ACERTOU!');
+            }
+
+        ">COROA</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

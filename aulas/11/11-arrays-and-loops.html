@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays and Loops</title>
+  </head>
+
+  <body>
+    <script>
+
+      
+      const meuArray = [10, 20, 30];
+      console.log(meuArray);
+
+      console.log(meuArray[2]);
+
+      meuArray[1] = 90;
+      console.log(meuArray);
+
+      [1, 'oi', true, {name:'meias', price: 10}, ['outro', 'array']];
+
+      console.log(typeof meuArray);
+      console.log(Array.isArray(meuArray));
+
+      console.log(meuArray.length);
+
+      meuArray.push(1000);
+
+      console.log(meuArray);
+
+      meuArray.splice(0, 1);
+      console.log(meuArray);
+      
+
+      /*
+      let i = 1;
+
+      while (i <= 10) {
+        console.log(i)
+        i++;
+      }
+
+      for (let i = 1; i <= 10; i++) {
+        console.log(i);
+      }
+
+      let randomNumber = 0;
+
+      while (randomNumber < 0.5) {
+        console.log(randomNumber);
+        randomNumber = Math.random();
+      }
+
+      console.log(randomNumber);
+      */
+
+      /*
+      const todoList = [
+        'make dinner',
+        'wash dishes',
+        'watch youtube'
+      ];
+
+      for (let i=0; todoList[i] != undefined; i++) {
+        console.log(i, todoList[i])
+      }
+      */
+
+      /*
+      const nums = [1, 1, 3];
+      let sum = 0;
+
+      for (let i = 0; nums[i] != undefined; i++) {
+        sum += nums[i];
+      }
+
+      console.log(sum);
+
+      const newArray = [];
+
+      for (let i = 0; nums[i] != undefined; i++) {
+        newArray.push(nums[i]*2);
+      }
+
+      console.log(newArray);
+      */
+    </script>
+  </body>
+</html>

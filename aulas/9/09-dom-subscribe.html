@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM PROJECTS</title>
+    
+    <style>
+      body {
+        font-family: Roboto, Arial;
+      }
+
+      .subscribe-button {
+        color: white;
+        background-color: black;
+        padding: 10px 15px;
+        border: none;
+        font-weight: bold;
+        border-radius: 50px;
+        cursor: pointer;
+      }
+
+      .isSubscribed {
+        color: black;
+        background-color: rgb(240, 240, 240);
+      }
+
+      .subscribe-button:hover {
+        opacity: 0.8;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+
+    <p>YouTube Subscribe Button</p>
+    <button class="js-subscribe-button subscribe-button" onclick="changeSubscribeButton()">Subscribe</button>
+
+    <script>
+
+      function changeSubscribeButton() {
+
+        const buttonElement = document.querySelector('.js-subscribe-button');
+
+        if (buttonElement.innerText === 'Subscribe') {
+          buttonElement.innerHTML = 'Subscribed';
+          buttonElement.classList.add('isSubscribed');
+        } else {
+          buttonElement.innerHTML = 'Subscribe';
+          buttonElement.classList.remove('isSubscribed');
+        };
+      }
+
+    </script>
+  </body>
+</html>

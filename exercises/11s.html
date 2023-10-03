@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>remove só 2 ovo</title>
+  </head>
+  <body>
+    <script>
+      const arrayTeste = ['pão', 'arroz', 'ovo', 'ovo', 'minecraft', 'ovo', 'aa', 'ovo'];
+
+      function remove2Ovo(array) {
+        const novoArray = []
+        let counter = 0
+        for (let i = 0; i < array.length; i++) {
+          if (array[i] === 'ovo' && counter < 2) {
+            counter ++;
+            continue;
+          } else {
+            novoArray.push(array[i]);
+          }
+        }
+        return novoArray
+      }
+
+      console.log(remove2Ovo(arrayTeste));
+    </script>
+  </body>
+</html>

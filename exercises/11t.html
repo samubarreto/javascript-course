@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>faz o reverse</title>
+  </head>
+  <body>
+    <script>
+      const arrayTeste = ['ovo', 'maçã', 'ovo', 'ovo', 'pão'];
+
+      function remove2últimosOvo(array) {
+        const arrayInvertido = array.reverse();
+        const novoArray = [];
+        let counter = 0;
+        for (let i = 0; i < arrayInvertido.length; i++) {
+          if (arrayInvertido[i] === 'ovo' && counter < 2) {
+            counter ++;
+            continue;
+          } else {
+            novoArray.push(arrayInvertido[i]);
+          }
+        }
+        return novoArray.reverse();
+      }
+
+      console.log(remove2últimosOvo(arrayTeste));
+    </script>
+  </body>
+</html>

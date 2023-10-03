@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joquempô</title>
+    <style>
+      body {
+        font-family: Roboto, Arial;
+      }
+    </style>
+  </head>
+  <body>
+
+    <p>Joquempô</p>
+    
+    <button onclick="
+    
+      let rng = Math.random();
+      let botMove = ''
+
+      if (rng >= 0 && rng < 1/3) {
+        botMove = 'Pedra';
+      } else if (rng >= 1/3 && rng <= 2/3) {
+        botMove = 'Papel';
+      } else {
+        botMove = 'Tesoura';
+      }
+
+      if (botMove === 'Pedra') {
+        alert(`Você escolheu pedra. O Bot escolheu ${botMove}. Empatou!`);
+      } else if (botMove === 'Papel') {
+        alert(`Você escolheu pedra. O Bot escolheu ${botMove}. Você perdeu!`);
+      } else if (botMove === 'Tesoura') {
+        alert(`Você escolheu pedra. O Bot escolheu ${botMove}. Você venceu!`);
+      }
+
+    ">Pedra
+    </button>
+
+    <button onclick="
+    
+    rng = Math.random();
+    botMove = ''
+
+    if (rng >= 0 && rng < 1/3) {
+      botMove = 'Pedra';
+    } else if (rng >= 1/3 && rng <= 2/3) {
+      botMove = 'Papel';
+    } else {
+      botMove = 'Tesoura';
+    }
+
+    if (botMove === 'Pedra') {
+      alert(`Você escolheu papel. O Bot escolheu ${botMove}. Você venceu!`);
+    } else if (botMove === 'Papel') {
+      alert(`Você escolheu papel. O Bot escolheu ${botMove}. Empatou!`);
+    } else if (botMove === 'Tesoura') {
+      alert(`Você escolheu papel. O Bot escolheu ${botMove}. Você perdeu!`);
+    }
+
+    ">Papel
+    </button>
+
+    <button onclick="
+    
+    rng = Math.random();
+    botMove = ''
+
+    if (rng >= 0 && rng < 1/3) {
+      botMove = 'Pedra';
+    } else if (rng >= 1/3 && rng <= 2/3) {
+      botMove = 'Papel';
+    } else {
+      botMove = 'Tesoura';
+    }
+
+    if (botMove === 'Pedra') {
+      alert(`Você escolheu tesoura. O Bot escolheu ${botMove}. Você perdeu!`);
+    } else if (botMove === 'Papel') {
+      alert(`Você escolheu tesoura. O Bot escolheu ${botMove}. Você venceu!`);
+    } else if (botMove === 'Tesoura') {
+      alert(`Você escolheu tesoura. O Bot escolheu ${botMove}. Empatou!`);
+    }
+
+  ">Tesoura
+  </button>
+
+  </body>
+</html>

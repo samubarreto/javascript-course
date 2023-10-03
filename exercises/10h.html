@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Shipping Calculus</title>
+
+    <style>
+      body {
+        font-family: Roboto, Arial;
+      }
+
+      .costInput {
+        padding: 10px;
+        font-size: 15px;
+      }
+
+      .calculateButton {
+        padding: 12px 15px;
+        font-size: 15px;
+        background-color: rgb(0, 128, 0);
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +$10 shipping.</p>
+    <p>Order over $40 = FREE shipping.</p>
+    <input placeholder="Cost of Order" class="js-costInput costInput" onkeydown="
+      handleCostKeydown(event);
+    ">
+    <button class="calculateButton" onclick ="
+      calculateAndShowFinalCost();
+    ">Calculate</button>
+    <p class="js-finalPrice"></p>
+    <p class="js-costError" style="color:red;"></p>
+
+    <script>
+
+      function handleCostKeydown(event) {
+        if (event.key === 'Enter') {
+          calculateAndShowFinalCost();
+        }
+      }
+
+      function calculateAndShowFinalCost() {
+        let cost = Number(document.querySelector('.js-costInput').value);
+        if (cost < 0) {
+          document.querySelector('.js-costError').innerHTML = `Error: cost cannot be less than $0`
+          document.querySelector('.js-finalPrice').innerHTML = ``;
+        } else if (cost < 40) {
+          cost = cost + 10;
+          cost = cost.toFixed(2);
+          document.querySelector('.js-finalPrice').innerHTML = `$${cost}`;
+          document.querySelector('.js-costError').innerHTML = ``
+        } else {
+          document.querySelector('.js-finalPrice').innerHTML = `$${cost}`;
+          document.querySelector('.js-costError').innerHTML = ``
+        }
+      }
+
+    </script>
+  </body>
+</html>
