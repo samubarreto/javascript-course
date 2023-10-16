@@ -6,16 +6,6 @@ let score = JSON.parse(localStorage.getItem('score')) || {
 
 updateScoreElement();
 
-/*      
-if (!score) {
-  score = {
-    wins: 0,
-    losses: 0,
-    ties: 0
-  }
-}
-*/
-
 function updateResultElement(result) {
   document.querySelector('.js-result')
   .innerHTML = result;
@@ -30,6 +20,26 @@ function updateScoreElement() {
   document.querySelector('.js-score')
   .innerHTML = `Vitórias: ${score.wins} · Derrotas: ${score.losses} · Empates: ${score.ties}`;
 };
+
+let isAutoPlaying = false;
+let intervalId;
+
+function autoPlay() {
+  if (!isAutoPlaying) {
+    document.querySelector('.js-autoplay-button').innerHTML = 'Stop Play';
+    intervalId = setInterval(function() {
+      const playerMove = shuffleBotMove();
+      botMove = shuffleBotMove();
+      playGame(playerMove);
+    }, 1000)
+    isAutoPlaying = true;
+  } else {
+    document.querySelector('.js-autoplay-button').innerHTML = 'Auto Play';
+    clearInterval(intervalId);
+    isAutoPlaying = false
+  }
+  
+}
 
 function playGame(playerMove) {
 
