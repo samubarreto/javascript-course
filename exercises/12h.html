@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp</title>
+</head>
+<body>
+  <button onclick="messages++">Add</button>
+  <button onclick="messages--">Remove</button>
+  <script>
+    
+    let messages = 0
+
+    setInterval(function () {
+      document.title = `(${messages}) New Messages`
+    }, 1000)
+
+  </script>
+</body>
+</html>
