@@ -56,13 +56,61 @@
 
 // console.log('next line2');
 
-[ // melhor método pra percorrer um array
-  'make dinner',
-  'wash dishes',
-  'watch youtube'
-].forEach(function(value, index) { // valor e posição
-  if (value === 'wash dishes') {
-    return;
-  }
-  console.log(index, value)
-})
+// [ // melhor método pra percorrer um array
+//   'make dinner',
+//   'wash dishes',
+//   'watch youtube'
+// ].forEach((value, index) => { // valor e posição
+//   if (value === 'wash dishes') {
+//     return;
+//   }
+//   console.log(index, value)
+// })
+
+// /////////////////////////////////// arrow function
+
+// const regularFunction = function(paramêtro1, paramêtro2) {
+//   console.log('hie');
+//   return 5;
+// };
+
+// regularFunction();
+
+// const arrowFunction = (paramêtro1, paramêtro2) => {
+//   console.log('hi there');
+//   return 6;
+// };
+
+// arrowFunction();
+
+// const oneParam = paramêtro => {
+//   console.log(paramêtro + 1);
+// }
+
+// oneParam(2);
+
+// const oneLine = () => 2+3;
+
+// console.log(oneLine());
+
+// const object2 = {
+//   method: () => {
+
+//   },
+//   method() {
+    
+//   }
+// };
+
+const buttonElement = document.querySelector('.js-button');
+const eventListener = () => {
+  console.log('click1')
+}
+
+buttonElement.addEventListener('click', eventListener);
+
+buttonElement.removeEventListener('click', eventListener)
+
+buttonElement.addEventListener('click', () => {
+  console.log('click2')
+});
